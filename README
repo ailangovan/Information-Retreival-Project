@@ -1,0 +1,88 @@
+Nicholas Morgan Aswath Ilangovan Michael Hanna
+Final Project
+CS 6200 Information Retrieval
+Professor Nada Naji
+
+Dependencies:
+    Java, 1.7
+        Maven
+        JSoup 1.11.3
+        Lucene 4.7.2
+
+    Python Version: 3
+        Beautiful Soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+        Pip Command: pip install beautifulsoup4
+
+        Pandas: https://pandas.pydata.org/getpandas.html
+        Installation Instructions (without pip): https://pandas.pydata.org/pandas-docs/stable/install.html
+        P   ip Command: pip install pandas
+
+        Matplotlib: https://matplotlib.org
+        Installation Instructions: https://matplotlib.org/users/installing.html
+        Pip Command: pip install matplotlib
+
+        HTML5Lib: https://pypi.org/project/html5lib/
+        Pip Command: pip install hmtl5lib
+
+To run the project:
+
+For Lucene execution:
+    - Maven can be used to build and install the project.
+    - Running in terminal:
+        mvn clean install
+    - For executing code, update parameters in
+        project_lucene/resources/config.properties
+    - The main function for Lucene Index and Retrieval is found in:
+        project_lucene/src/main/java/project_lucene/Lucene.java
+        (This function provides terminal interaction to provide options for reindexing)
+        Supporting classes:
+            - LuceneIndexer.java, Setups Lucene Index functionality for the main function
+            - LuceneRetriever.java, Setup LuceneRetriever for the main function
+
+For the Python Execution for the Remainder of the Runs:
+
+To perform JM Smoothing, BM25, or TFIDF runs, execute the Retrieval.py script via:
+
+- Import the project directory into Pycharm, running the file
+- In Terminal, python Retrieval.py
+
+First you will be prompted whether you're performing a stemming run. If so, type y and hit enter.
+This run will take some time to execute, as stemming performs Indexing and Tokenization every time it runs.
+
+If you are trying to execute different runs enter 'n'
+
+If you wish to index a corpus, drag the corpus directory into the top level of the Project directory.
+When prompted after hitting 'n' and enter above, type the name of the directory of the corpus to index.
+For the CACM corpus, type 'cacm' and hit enter.
+
+If you have already indexed the corpus, type 'q' and hit enter.
+
+You will then be prompted for a retrieval method. Type the exact name as shown and hit enter for the respective
+retrieval method to execute.
+
+You will then be prompted to apply stopping to the query. Type 'y' to perform a stopping run, 'n' to not.
+
+Finally, you will be prompted to add snippets to the output. Type 'y' to add snippets, 'n' to skip.
+
+Non snippet results are stored in the 'Outputs' directory in the form 'RetrievalMethod_QueryNumber_specialmethod.txt'.
+
+For query 1 with BM25 and no stopping, the filename will be 'bm25_1.txt'
+For query 1 with BM25 and stopping, the filename will be 'bm25_1_stopping.txt'
+
+Query Expansion only runs with bm25 and will output files 'bm25_querynumber_query_enrichment.txt'
+
+To Perform Query Enrichment:
+
+execute 'python Query_Expansion.py'
+
+Note: This file assumes the corpus has already been indexed. Please perform Indexing in Retrieval.py beforehand.
+
+To Perform a Lucene Run:
+    - Update parameters in
+        project_lucene/resources/config.properties
+    - The main function for Lucene Index and Retrieval is found in:
+        project_lucene/src/main/java/project_lucene/Lucene.java
+
+To Perform Evaluation:
+
+execute 'python Evaluation.py'
